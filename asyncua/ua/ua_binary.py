@@ -133,6 +133,7 @@ class _Primitive1:
         self.format = st.format
 
     def pack(self, data):
+        print(self, self.format, data)
         return struct.pack(self.format, data)
 
     def unpack(self, data):
