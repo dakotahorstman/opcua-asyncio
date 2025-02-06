@@ -138,7 +138,7 @@ class _Primitive1:
         try:
             return struct.pack(self.format, data)
         except Exception:
-            print(self, self.format, data)
+            print(self, self.format, type(data), data)
             raise
 
     def unpack(self, data):
