@@ -22,6 +22,7 @@ from .uatypes import (
     types_or_list_from_union,
     type_allow_subclass,
 )
+from loguru import logger
 
 _logger = logging.getLogger(__name__)
 
@@ -132,8 +133,8 @@ class _Primitive1:
         self.size = st.size
         self.format = st.format
 
+    @logger.catch(reraise=True)
     def pack(self, data):
-        print(self, self.format, data)
         return struct.pack(self.format, data)
 
     def unpack(self, data):
