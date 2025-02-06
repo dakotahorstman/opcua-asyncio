@@ -135,7 +135,11 @@ class _Primitive1:
 
     @logger.catch(reraise=True)
     def pack(self, data):
-        return struct.pack(self.format, data)
+        try:
+            return struct.pack(self.format, data)
+        except Exception:
+            print(self, self.format, data)
+            raise
 
     def unpack(self, data):
         return struct.unpack(self.format, data.read(self.size))[0]
